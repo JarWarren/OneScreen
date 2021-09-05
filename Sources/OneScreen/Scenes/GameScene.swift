@@ -91,16 +91,35 @@ class GameScene: Scene {
                 type: .static,
                 offset: Vector(x: 713, y: 634)
             )
-            ParallaxBackgroundBehavior(texture: .background)
+            ScrollingBackgroundBehavior(texture: .background)
         }
 
         // Enemies
 
+        // End goal
+        createEntity(at: Vector(x: 920, y: 64)) {
+            Sprite(texture: .end)
+            PhysicsBody(
+                shape: .rectangle(size: Vector(x: 64, y: 64)),
+                type: .static,
+                categoryBitMask: .friendly,
+                collisionBitMask: .none,
+                detectionBitMask: .player
+            )
+            EndGoalBehavior()
+        }
 
         // Player
         createEntity(at: Vector(x: 48, y: 680)) {
             Sprite(animation: .frogIdle)
-            PhysicsBody(shape: .circle(radius: 12), type: .dynamic, offset: Vector(x: 16, y: 20))
+            PhysicsBody(
+                shape: .circle(radius: 12),
+                type: .dynamic,
+                offset: Vector(x: 16, y: 20),
+            categoryBitMask: .player,
+            collisionBitMask: .terrain,
+            detectionBitMask: .none
+            )
             PlayerController()
         }
     }

@@ -5,7 +5,7 @@
 import Foundation
 import WarrenEngine
 
-class ParallaxBackgroundBehavior: Behavior {
+class ScrollingBackgroundBehavior: Behavior {
     weak var entity: Entity?
     var sprites: [Sprite] = []
 
