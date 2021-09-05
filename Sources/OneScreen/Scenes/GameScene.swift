@@ -98,12 +98,20 @@ class GameScene: Scene {
 
 
         // Player
+        createEntity(at: Vector(x: 48, y: 680)) {
+            Sprite(animation: .frogIdle)
+            PhysicsBody(shape: .circle(radius: 12), type: .dynamic, offset: Vector(x: 16, y: 20))
+            PlayerController()
+        }
     }
 
     override func update(deltaTime: Foundation.TimeInterval) {
         super.update(deltaTime: deltaTime)
-        if Input.wasKeyPressed(.tab) {
+        if Input.wasKeyPressed(.d) {
             Game.isDebugMode.toggle()
+        }
+        if Input.wasKeyPressed(.f) {
+            Window.toggleFullscreen()
         }
     }
 }
