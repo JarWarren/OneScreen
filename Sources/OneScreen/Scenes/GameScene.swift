@@ -94,6 +94,14 @@ class GameScene: Scene {
             ScrollingBackgroundBehavior(texture: .background)
         }
 
+        // Platforms
+        createEntity(at: Vector(x: 860, y: 524)) {
+            Sprite(animation: .floatingPlatform)
+            PhysicsBody(shape: .rectangle(size: Vector(x: 32, y: 10)), type: .static)
+            FloatingPlatformBehavior()
+        }
+
+
         // Enemies
 
         // End goal
