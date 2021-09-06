@@ -8,6 +8,7 @@ import WarrenEngine
 class GameScene: Scene {
     override func sceneDidLoad() {
         super.sceneDidLoad()
+        Game.isDebugMode = true
 
         // Environment
         createEntity(at: .zero) {
@@ -53,6 +54,35 @@ class GameScene: Scene {
                 shape: .rectangle(size: Vector(x: 16, y: 16)),
                 type: .static,
                 offset: Vector(x: 1000, y: 693)
+            )
+
+            // bricks
+            PhysicsBody(
+                shape: .rectangle(size: Vector(x: 480, y: 48)),
+                type: .static,
+                offset: Vector(x: 205, y: 466)
+            )
+            PhysicsBody(
+                shape: .rectangle(size: Vector(x: 480, y: 48)),
+                type: .static,
+                offset: Vector(x: 205, y: 253)
+            )
+
+            // goal platforms
+            PhysicsBody(
+                shape: .rectangle(size: Vector(x: 48, y: 5)),
+                type: .static,
+                offset: Vector(x: 8, y: 133)
+            )
+            PhysicsBody(
+                shape: .rectangle(size: Vector(x: 48, y: 5)),
+                type: .static,
+                offset: Vector(x: 968, y: 518)
+            )
+            PhysicsBody(
+                shape: .rectangle(size: Vector(x: 48, y: 5)),
+                type: .static,
+                offset: Vector(x: 968, y: 104)
             )
 
             // grass
@@ -110,7 +140,7 @@ class GameScene: Scene {
             FloatingPlatformBehavior(direction: .horizontal)
         }
 
-        createEntity(at: Vector(x: 860, y: 524)) {
+        createEntity(at: Vector(x: 860, y: 550)) {
             Sprite(animation: .floatingPlatform)
             PhysicsBody(shape: .rectangle(size: Vector(x: 32, y: 10)), type: .static)
             PhysicsBody(
@@ -125,15 +155,31 @@ class GameScene: Scene {
             FloatingPlatformBehavior()
         }
 
+        createEntity(at: Vector(x: 730, y: 510)) {
+            Sprite(animation: .floatingPlatform)
+            PhysicsBody(shape: .rectangle(size: Vector(x: 32, y: 10)), type: .static)
+            PhysicsBody(
+                id: "hitbox",
+                shape: .rectangle(size: Vector(x: 32, y: 5)),
+                type: .static,
+                offset: Vector(x: 0, y: -5),
+                categoryBitMask: .terrain,
+                collisionBitMask: .none,
+                detectionBitMask: .player
+            )
+            FloatingPlatformBehavior(direction: .horizontal, distance: 180)
+        }
+
 
         // Enemies
 
         // End goal
-        createEntity(at: Vector(x: 920, y: 64)) {
+        createEntity(at: Vector(x: 958, y: 40)) {
             Sprite(texture: .end)
             PhysicsBody(
-                shape: .rectangle(size: Vector(x: 64, y: 64)),
+                shape: .rectangle(size: Vector(x: 4, y: 24)),
                 type: .static,
+                offset: Vector(x: 32, y: 32),
                 categoryBitMask: .friendly,
                 collisionBitMask: .none,
                 detectionBitMask: .player
