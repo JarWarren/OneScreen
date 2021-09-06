@@ -33,6 +33,16 @@ class GameScene: Scene {
                 type: .static,
                 offset: Vector(x: 0, y: 708)
             )
+            PhysicsBody(
+                shape: .rectangle(size: Vector(x: 9, y: 256)),
+                type: .static,
+                offset: Vector(x: 724, y: 148)
+            )
+            PhysicsBody(
+                shape: .rectangle(size: Vector(x: 283, y: 9)),
+                type: .static,
+                offset: Vector(x: 732, y: 392)
+            )
 
             // blocks
             PhysicsBody(
@@ -142,6 +152,53 @@ class GameScene: Scene {
                 offset: Vector(x: 429, y: 222)
             )
 
+            // gold blocks
+            PhysicsBody(
+                shape: .rectangle(size: Vector(x: 16, y: 48)),
+                type: .static,
+                offset: Vector(x: 732, y: 243)
+            )
+            PhysicsBody(
+                shape: .rectangle(size: Vector(x: 16, y: 16)),
+                type: .static,
+                offset: Vector(x: 779, y: 377)
+            )
+            PhysicsBody(
+                shape: .rectangle(size: Vector(x: 16, y: 16)),
+                type: .static,
+                offset: Vector(x: 953, y: 377)
+            )
+            PhysicsBody(
+                shape: .rectangle(size: Vector(x: 48, y: 16)),
+                type: .static,
+                offset: Vector(x: 833, y: 67)
+            )
+            PhysicsBody(
+                shape: .rectangle(size: Vector(x: 48, y: 16)),
+                type: .static,
+                offset: Vector(x: 833, y: 138)
+            )
+            PhysicsBody(
+                shape: .rectangle(size: Vector(x: 48, y: 16)),
+                type: .static,
+                offset: Vector(x: 833, y: 217)
+            )
+            PhysicsBody(
+                shape: .rectangle(size: Vector(x: 48, y: 16)),
+                type: .static,
+                offset: Vector(x: 833, y: 300)
+            )
+            PhysicsBody(
+                shape: .rectangle(size: Vector(x: 16, y: 48)),
+                type: .static,
+                offset: Vector(x: 1000, y: 201)
+            )
+            PhysicsBody(
+                shape: .rectangle(size: Vector(x: 32, y: 32)),
+                type: .static,
+                offset: Vector(x: 984, y: 314)
+            )
+
             // goal platforms
             PhysicsBody(
                 shape: .rectangle(size: Vector(x: 48, y: 5)),
@@ -204,6 +261,16 @@ class GameScene: Scene {
                 shape: .rectangle(size: Vector(x: 63, y: 48)),
                 type: .static,
                 offset: Vector(x: 622, y: 206)
+            )
+            PhysicsBody(
+                shape: .rectangle(size: Vector(x: 48, y: 25)),
+                type: .static,
+                offset: Vector(x: 732, y: 368)
+            )
+            PhysicsBody(
+                shape: .rectangle(size: Vector(x: 48, y: 48)),
+                type: .static,
+                offset: Vector(x: 968, y: 345)
             )
             ScrollingBackgroundBehavior(texture: .background)
         }
