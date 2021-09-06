@@ -6,7 +6,12 @@ import Foundation
 import WarrenEngine
 
 extension Texture {
-    static let terrain = Texture(fileName: "terrain")
     static let background = Texture(fileName: "background")
-    static let end = Texture(fileName: "End (Idle)")
+    static let brownSpikeIdle = Texture(fileName: "Idle Brown Spike")
+
+    static let goal = Texture(fileName: "Checkpoint (No Flag)")
+
+    static let terrain = Texture(fileName: "terrain")
+    static let trophy = Texture(fileName: "End (Idle)")
+    static let thwomp = Texture(fileName: "Idle")
 }
