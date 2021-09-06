@@ -21,7 +21,7 @@ class PlayerController: Behavior {
 
     func update(_ deltaTime: TimeInterval) {
         // apply gravity but cap at -9
-        verticalAcceleration = max(verticalAcceleration - 1, -speed)
+        verticalAcceleration = max(verticalAcceleration - 0.75, -speed * 2)
 
         // check for inputs
         if Input.isKeyDown(.left) {
@@ -45,7 +45,7 @@ class PlayerController: Behavior {
 
         if Input.wasKeyPressed(.space),
            body?.isOnFloor == true {
-            verticalAcceleration = speed * speed
+            verticalAcceleration = speed * 3
         }
 
         // apply acceleration
