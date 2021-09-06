@@ -95,9 +95,33 @@ class GameScene: Scene {
         }
 
         // Platforms
+        createEntity(at: Vector(x: 560, y: 600)) {
+            Sprite(animation: .floatingPlatform)
+            PhysicsBody(shape: .rectangle(size: Vector(x: 32, y: 10)), type: .static)
+            PhysicsBody(
+                id: "hitbox",
+                shape: .rectangle(size: Vector(x: 32, y: 5)),
+                type: .static,
+                offset: Vector(x: 0, y: -5),
+                categoryBitMask: .terrain,
+                collisionBitMask: .none,
+                detectionBitMask: .player
+            )
+            FloatingPlatformBehavior(direction: .horizontal)
+        }
+
         createEntity(at: Vector(x: 860, y: 524)) {
             Sprite(animation: .floatingPlatform)
             PhysicsBody(shape: .rectangle(size: Vector(x: 32, y: 10)), type: .static)
+            PhysicsBody(
+                id: "hitbox",
+                shape: .rectangle(size: Vector(x: 32, y: 5)),
+                type: .static,
+                offset: Vector(x: 0, y: -5),
+                categoryBitMask: .terrain,
+                collisionBitMask: .none,
+                detectionBitMask: .player
+            )
             FloatingPlatformBehavior()
         }
 
@@ -124,9 +148,9 @@ class GameScene: Scene {
                 shape: .circle(radius: 12),
                 type: .dynamic,
                 offset: Vector(x: 16, y: 20),
-            categoryBitMask: .player,
-            collisionBitMask: .terrain,
-            detectionBitMask: .none
+                categoryBitMask: .player,
+                collisionBitMask: .terrain,
+                detectionBitMask: .none
             )
             PlayerController()
         }

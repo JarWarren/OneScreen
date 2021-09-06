@@ -5,10 +5,11 @@
 import Foundation
 import WarrenEngine
 
-class FloatingPlatformBehavior: Behavior {
+class FloatingPlatformBehavior: Behavior, PhysicsBodyDelegate {
     let direction: Direction
     let distance: Double
     weak var entity: Entity?
+    weak var foreignBody: PhysicsBody?
     private let hoverFrames = 24
     private var isReversed = false
     private var reverseTimer: Int
@@ -21,6 +22,7 @@ class FloatingPlatformBehavior: Behavior {
     }
 
     func behaviorWillStart() {
+        getPhysicsBody(id: "hitbox")?.delegate = self
         if case .vertical = direction {
             startingPosition = entityPosition.y
         } else {
@@ -51,6 +53,7 @@ class FloatingPlatformBehavior: Behavior {
         } else if isReversed {
             if entityPosition.x < startingPosition + distance {
                 entityPosition.x += 1
+                foreignBody?.entityPosition.x += 1
             } else {
                 updateReverseTimer()
             }
@@ -59,6 +62,7 @@ class FloatingPlatformBehavior: Behavior {
         } else {
             if entityPosition.x > startingPosition {
                 entityPosition.x -= 1
+                foreignBody?.entityPosition.x -= 1
             } else {
                 updateReverseTimer()
             }
@@ -75,6 +79,14 @@ class FloatingPlatformBehavior: Behavior {
     }
 
     func behaviorWillTerminate() {
+    }
+
+    func bodyDidEnter(_ body: PhysicsBody) {
+        foreignBody = body
+    }
+
+    func bodyDidExit(_ body: PhysicsBody) {
+        foreignBody = nil
     }
 
     enum Direction {
