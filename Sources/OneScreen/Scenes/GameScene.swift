@@ -342,9 +342,9 @@ class GameScene: Scene {
         createEntity(at: Vector(x: 48, y: 680)) {
             Sprite(animation: .frogIdle)
             PhysicsBody(
-                shape: .circle(radius: 12),
+                shape: .rectangle(size: Vector(x: 24, y: 24)),
                 type: .dynamic,
-                offset: Vector(x: 16, y: 20),
+                offset: Vector(x: 4, y: 8),
                 categoryBitMask: .player,
                 collisionBitMask: .terrain,
                 detectionBitMask: .none

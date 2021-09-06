@@ -56,6 +56,6 @@ class PlayerController: Behavior {
     }
 
     enum State {
-        case idle, run
+        case idle, run, jump, fall, doubleJump, doubleFall, dead, wallJump
     }
 }
