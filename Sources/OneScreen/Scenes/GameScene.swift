@@ -68,7 +68,7 @@ class GameScene: Scene {
                 offset: Vector(x: 205, y: 253)
             )
 
-            // metal blocks
+            // bronze blocks
             PhysicsBody(
                 shape: .rectangle(size: Vector(x: 140, y: 16)),
                 type: .static,
@@ -113,6 +113,33 @@ class GameScene: Scene {
                 shape: .rectangle(size: Vector(x: 32, y: 32)),
                 type: .static,
                 offset: Vector(x: 86, y: 399)
+            )
+
+            // silver blocks
+            PhysicsBody(
+                shape: .rectangle(size: Vector(x: 16, y: 16)),
+                type: .static,
+                offset: Vector(x: 437, y: 11)
+            )
+            PhysicsBody(
+                shape: .rectangle(size: Vector(x: 16, y: 16)),
+                type: .static,
+                offset: Vector(x: 437, y: 60)
+            )
+            PhysicsBody(
+                shape: .rectangle(size: Vector(x: 16, y: 16)),
+                type: .static,
+                offset: Vector(x: 437, y: 111)
+            )
+            PhysicsBody(
+                shape: .rectangle(size: Vector(x: 16, y: 16)),
+                type: .static,
+                offset: Vector(x: 437, y: 168)
+            )
+            PhysicsBody(
+                shape: .rectangle(size: Vector(x: 32, y: 32)),
+                type: .static,
+                offset: Vector(x: 429, y: 222)
             )
 
             // goal platforms
@@ -167,6 +194,16 @@ class GameScene: Scene {
                 shape: .rectangle(size: Vector(x: 48, y: 75)),
                 type: .static,
                 offset: Vector(x: 713, y: 634)
+            )
+            PhysicsBody(
+                shape: .rectangle(size: Vector(x: 63, y: 48)),
+                type: .static,
+                offset: Vector(x: 205, y: 206)
+            )
+            PhysicsBody(
+                shape: .rectangle(size: Vector(x: 63, y: 48)),
+                type: .static,
+                offset: Vector(x: 622, y: 206)
             )
             ScrollingBackgroundBehavior(texture: .background)
         }
