@@ -324,27 +324,60 @@ class GameScene: Scene {
 
         // Enemies
 
-        // End goal
-        createEntity(at: Vector(x: 958, y: 40)) {
-            Sprite(texture: .end)
+        // Goals
+        createEntity(at: .zero) {
+            Sprite(
+                id: "wood",
+                animation: .goalIdle,
+                offset: Vector(x: 958, y: 454)
+            )
             PhysicsBody(
-                shape: .rectangle(size: Vector(x: 4, y: 24)),
+                id: "wood",
+                shape: .rectangle(size: Vector(x: 24, y: 24)),
                 type: .static,
-                offset: Vector(x: 32, y: 32),
+                offset: Vector(x: 980, y: 480),
                 categoryBitMask: .friendly,
                 collisionBitMask: .none,
                 detectionBitMask: .player
             )
-            EndGoalBehavior()
+            Sprite(
+                id: "iron",
+                texture: .goal,
+                offset: Vector(x: 8, y: 69)
+            )
+            PhysicsBody(
+                id: "iron",
+                shape: .rectangle(size: Vector(x: 24, y: 24)),
+                type: .static,
+                offset: Vector(x: 30, y: 100),
+                categoryBitMask: .friendly,
+                collisionBitMask: .none,
+                detectionBitMask: .player
+            )
+            Sprite(
+                id: "gold",
+                texture: .trophy,
+                offset: Vector(x: 958, y: 40)
+            )
+            PhysicsBody(
+                id: "gold",
+                shape: .rectangle(size: Vector(x: 24, y: 24)),
+                type: .static,
+                offset: Vector(x: 990, y: 72),
+                categoryBitMask: .friendly,
+                collisionBitMask: .none,
+                detectionBitMask: .player
+            )
+            GoalBehavior()
         }
 
         // Player
         createEntity(at: Vector(x: 48, y: 680)) {
             Sprite(animation: .frogIdle)
             PhysicsBody(
-                shape: .circle(radius: 12),
+                shape: .rectangle(size: Vector(x: 24, y: 24)),
                 type: .dynamic,
-                offset: Vector(x: 16, y: 20),
+                offset: Vector(x: 4, y: 8),
                 categoryBitMask: .player,
                 collisionBitMask: .terrain,
                 detectionBitMask: .none
