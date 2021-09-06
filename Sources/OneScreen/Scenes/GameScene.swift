@@ -68,6 +68,53 @@ class GameScene: Scene {
                 offset: Vector(x: 205, y: 253)
             )
 
+            // metal blocks
+            PhysicsBody(
+                shape: .rectangle(size: Vector(x: 140, y: 16)),
+                type: .static,
+                offset: Vector(x: 8, y: 482)
+            )
+            PhysicsBody(
+                shape: .rectangle(size: Vector(x: 16, y: 16)),
+                type: .static,
+                offset: Vector(x: 94, y: 153)
+            )
+            PhysicsBody(
+                shape: .rectangle(size: Vector(x: 16, y: 16)),
+                type: .static,
+                offset: Vector(x: 141, y: 180)
+            )
+            PhysicsBody(
+                shape: .rectangle(size: Vector(x: 16, y: 16)),
+                type: .static,
+                offset: Vector(x: 171, y: 232)
+            )
+            PhysicsBody(
+                shape: .rectangle(size: Vector(x: 16, y: 16)),
+                type: .static,
+                offset: Vector(x: 140, y: 269)
+            )
+            PhysicsBody(
+                shape: .rectangle(size: Vector(x: 16, y: 16)),
+                type: .static,
+                offset: Vector(x: 109, y: 300)
+            )
+            PhysicsBody(
+                shape: .rectangle(size: Vector(x: 16, y: 16)),
+                type: .static,
+                offset: Vector(x: 79, y: 332)
+            )
+            PhysicsBody(
+                shape: .rectangle(size: Vector(x: 16, y: 48)),
+                type: .static,
+                offset: Vector(x: 94, y: 300)
+            )
+            PhysicsBody(
+                shape: .rectangle(size: Vector(x: 32, y: 32)),
+                type: .static,
+                offset: Vector(x: 86, y: 399)
+            )
+
             // goal platforms
             PhysicsBody(
                 shape: .rectangle(size: Vector(x: 48, y: 5)),
@@ -124,7 +171,7 @@ class GameScene: Scene {
             ScrollingBackgroundBehavior(texture: .background)
         }
 
-        // Platforms
+        // Floating Platforms
         createEntity(at: Vector(x: 560, y: 600)) {
             Sprite(animation: .floatingPlatform)
             PhysicsBody(shape: .rectangle(size: Vector(x: 32, y: 10)), type: .static)
