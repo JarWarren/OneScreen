@@ -8,11 +8,15 @@ import WarrenEngine
 class GameScene: Scene {
     override func sceneDidLoad() {
         super.sceneDidLoad()
-        Game.isDebugMode = true
 
         // Environment
         createEntity(at: .zero) {
             Sprite(texture: .terrain)
+            Shape(
+                shape: .rectangle(size: Vector(x: 1024, y: 120)),
+                color: .black,
+                offset: Vector(x: 0, y: 720)
+            )
 
             // walls
             PhysicsBody(
@@ -201,17 +205,17 @@ class GameScene: Scene {
 
             // goal platforms
             PhysicsBody(
-                shape: .rectangle(size: Vector(x: 48, y: 5)),
+                shape: .rectangle(size: Vector(x: 48, y: 8)),
                 type: .static,
                 offset: Vector(x: 8, y: 133)
             )
             PhysicsBody(
-                shape: .rectangle(size: Vector(x: 48, y: 5)),
+                shape: .rectangle(size: Vector(x: 48, y: 8)),
                 type: .static,
                 offset: Vector(x: 968, y: 518)
             )
             PhysicsBody(
-                shape: .rectangle(size: Vector(x: 48, y: 5)),
+                shape: .rectangle(size: Vector(x: 48, y: 8)),
                 type: .static,
                 offset: Vector(x: 968, y: 104)
             )
@@ -323,7 +327,16 @@ class GameScene: Scene {
 
 
         // Enemies
-
+        createEntity(at: Vector(x: 620, y: 677)) {
+            Sprite(animation: .fire)
+            PhysicsBody(
+                shape: .rectangle(size: Vector(x: 16, y: 16)),
+                type: .static,
+                categoryBitMask: .dangerous,
+                collisionBitMask: .none,
+                detectionBitMask: .none
+            )
+        }
         // Goals
         createEntity(at: .zero) {
             Sprite(
@@ -380,7 +393,7 @@ class GameScene: Scene {
                 offset: Vector(x: 4, y: 8),
                 categoryBitMask: .player,
                 collisionBitMask: .terrain,
-                detectionBitMask: .none
+                detectionBitMask: .dangerous
             )
             PlayerController()
         }

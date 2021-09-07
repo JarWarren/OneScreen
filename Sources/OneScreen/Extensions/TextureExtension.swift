@@ -10,6 +10,7 @@ extension Texture {
     static let brownSpikeIdle = Texture(fileName: "Idle Brown Spike")
 
     static let goal = Texture(fileName: "Checkpoint (No Flag)")
+    static let goalCaptured = Animation.goalIdleSheet[7]
 
     static let terrain = Texture(fileName: "terrain")
     static let trophy = Texture(fileName: "End (Idle)")

@@ -5,7 +5,7 @@
 import Foundation
 import WarrenEngine
 
-class PlayerController: Behavior {
+class PlayerController: Behavior, PhysicsBodyDelegate {
     weak var entity: Entity?
     weak var body: PhysicsBody?
     weak var sprite: Sprite?
@@ -17,9 +17,13 @@ class PlayerController: Behavior {
     func behaviorWillStart() {
         body = getPhysicsBody()
         sprite = getSprite()
+        body?.delegate = self
     }
 
     func update(_ deltaTime: TimeInterval) {
+        guard state != .dead else { return }
+
+
         // apply gravity but cap at -9
         verticalAcceleration = max(verticalAcceleration - 0.75, -speed * 2)
 
@@ -53,6 +57,18 @@ class PlayerController: Behavior {
     }
 
     func behaviorWillTerminate() {
+    }
+
+    func bodyDidEnter(_ body: PhysicsBody) {
+        if body.categoryBitMask.contains(.dangerous) {
+            state = .dead
+            sprite?.animation = .frogDeath
+            sprite?.offset = Vector(x: -32, y: -32)
+        }
+    }
+
+    func bodyDidExit(_ body: PhysicsBody) {
+
     }
 
     enum State {

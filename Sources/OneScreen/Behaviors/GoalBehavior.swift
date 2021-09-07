@@ -45,31 +45,34 @@ class GoalBehavior: Behavior, PhysicsBodyDelegate {
     }
 
     func bodyDidEnter(_ body: PhysicsBody) {
-        removeComponentFromEntity(body)
         switch activeGoal {
         case .wood:
             woodSprite?.animation = nil
             woodSprite?.tint = .lightGray
-            woodSprite?.texture = .goal
+            woodSprite?.texture = .goalCaptured
             ironBody?.isEnabled = true
             ironSprite?.animation = Animation(
                 textures: SpriteSheet(fileName: "Checkpoint (Flag Out) (64x64)", rows: 1, columns: 26)![0...25],
                 framesPerSecond: Animation.animationSpeed
             )
             activeGoal = .iron
+            woodBody.flatMap(removeComponentFromEntity)
         case .iron:
             ironSprite?.animation = nil
             ironSprite?.tint = .lightGray
+            ironSprite?.texture = .goalCaptured
             goldBody?.isEnabled = true
             goldSprite?.animation = Animation(
                 textures: SpriteSheet(fileName: "End (Pressed) (64x64)", rows: 1, columns: 8)![0...7],
                 framesPerSecond: Animation.animationSpeed
             )
             activeGoal = .gold
+            ironBody.flatMap(removeComponentFromEntity)
         case .gold:
             print("Victory")
             goldSprite?.tint = .lightGray
             goldSprite?.animation = nil
+            goldBody.flatMap(removeComponentFromEntity)
         }
 
     }

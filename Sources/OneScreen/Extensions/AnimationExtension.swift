@@ -7,6 +7,7 @@ import WarrenEngine
 
 extension Animation {
     static let animationSpeed = 20
+    static let goalIdleSheet = SpriteSheet(fileName: "Checkpoint (Flag Idle)(64x64)", rows: 1, columns: 10)!
 
     static let brownSpikeBlink = Animation(
         textures: SpriteSheet(fileName: "Blink (54x52)", rows: 1, columns: 4)![0...3],
@@ -23,6 +24,12 @@ extension Animation {
         framesPerSecond: animationSpeed
     )
 
+    static let frogDeath = Animation(
+        textures: SpriteSheet(fileName: "Disappearing (96x96)", rows: 1, columns: 7)![0...6],
+        framesPerSecond: animationSpeed,
+        shouldLoop: false
+    )
+
     static let frogIdle = Animation(
         textures: SpriteSheet(fileName: "Idle (32x32)", rows: 1, columns: 11)![0...10],
         framesPerSecond: animationSpeed
@@ -34,7 +41,7 @@ extension Animation {
     )
 
     static let goalIdle = Animation(
-        textures: SpriteSheet(fileName: "Checkpoint (Flag Idle)(64x64)", rows: 1, columns: 10)![0...9],
+        textures: goalIdleSheet[0...9],
         framesPerSecond: animationSpeed
     )
 
